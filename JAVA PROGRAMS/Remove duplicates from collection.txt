@@ -1,0 +1,805 @@
+
+                OverviewPackageClassUseTreeDeprecatedIndexHelpJava™ Platform
+Standard Ed. 7Prev ClassNext ClassFramesNo FramesAll ClassesSummary: Nested | Field | Constr | MethodDetail: Field | Constr | Method
+java.util
+Interface Deque<E>
+Type Parameters:
+E - the type of elements held in this collection
+All Superinterfaces:
+Collection<E>, Iterable<E>, Queue<E>
+All Known Subinterfaces:
+BlockingDeque<E>
+All Known Implementing Classes:
+ArrayDeque, ConcurrentLinkedDeque, LinkedBlockingDeque, LinkedList
+
+public interface Deque<E>
+extends Queue<E>
+A linear collection that supports element insertion and removal at both ends. The name deque is short for "double ended queue" and is usually pronounced "deck". Most Deque implementations place no fixed limits on the number of elements they may contain, but this interface supports capacity-restricted deques as well as those with no fixed size limit.
+This interface defines methods to access the elements at both ends of the deque. Methods are provided to insert, remove, and examine the element. Each of these methods exists in two forms: one throws an exception if the operation fails, the other returns a special value (either null or false, depending on the operation). The latter form of the insert operation is designed specifically for use with capacity-restricted Deque implementations; in most implementations, insert operations cannot fail.
+
+The twelve methods described above are summarized in the following table:
+
+First Element (Head)	Last Element (Tail)
+Throws exception	Special value	Throws exception	Special value
+Insert	addFirst(e)	offerFirst(e)	addLast(e)	offerLast(e)
+Remove	removeFirst()	pollFirst()	removeLast()	pollLast()
+Examine	getFirst()	peekFirst()	getLast()	peekLast()
+This interface extends the Queue interface. When a deque is used as a queue, FIFO (First-In-First-Out) behavior results. Elements are added at the end of the deque and removed from the beginning. The methods inherited from the Queue interface are precisely equivalent to Deque methods as indicated in the following table:
+
+Queue Method	Equivalent Deque Method
+add(e)	addLast(e)
+offer(e)	offerLast(e)
+remove()	removeFirst()
+poll()	pollFirst()
+element()	getFirst()
+peek()	peekFirst()
+Deques can also be used as LIFO (Last-In-First-Out) stacks. This interface should be used in preference to the legacy Stack class. When a deque is used as a stack, elements are pushed and popped from the beginning of the deque. Stack methods are precisely equivalent to Deque methods as indicated in the table below:
+
+Stack Method	Equivalent Deque Method
+push(e)	addFirst(e)
+pop()	removeFirst()
+peek()	peekFirst()
+Note that the peek method works equally well when a deque is used as a queue or a stack; in either case, elements are drawn from the beginning of the deque.
+
+This interface provides two methods to remove interior elements, removeFirstOccurrence and removeLastOccurrence.
+
+Unlike the List interface, this interface does not provide support for indexed access to elements.
+
+While Deque implementations are not strictly required to prohibit the insertion of null elements, they are strongly encouraged to do so. Users of any Deque implementations that do allow null elements are strongly encouraged not to take advantage of the ability to insert nulls. This is so because null is used as a special return value by various methods to indicated that the deque is empty.
+
+Deque implementations generally do not define element-based versions of the equals and hashCode methods, but instead inherit the identity-based versions from class Object.
+
+This interface is a member of the Java Collections Framework.
+
+Since:
+1.6
+Method Summary
+Methods 
+Modifier and Type	Method and Description
+boolean	add(E e)
+Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+void	addFirst(E e)
+Inserts the specified element at the front of this deque if it is possible to do so immediately without violating capacity restrictions.
+void	addLast(E e)
+Inserts the specified element at the end of this deque if it is possible to do so immediately without violating capacity restrictions.
+boolean	contains(Object o)
+Returns true if this deque contains the specified element.
+Iterator<E>	descendingIterator()
+Returns an iterator over the elements in this deque in reverse sequential order.
+E	element()
+Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque).
+E	getFirst()
+Retrieves, but does not remove, the first element of this deque.
+E	getLast()
+Retrieves, but does not remove, the last element of this deque.
+Iterator<E>	iterator()
+Returns an iterator over the elements in this deque in proper sequence.
+boolean	offer(E e)
+Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and false if no space is currently available.
+boolean	offerFirst(E e)
+Inserts the specified element at the front of this deque unless it would violate capacity restrictions.
+boolean	offerLast(E e)
+Inserts the specified element at the end of this deque unless it would violate capacity restrictions.
+E	peek()
+Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+E	peekFirst()
+Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty.
+E	peekLast()
+Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty.
+E	poll()
+Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+E	pollFirst()
+Retrieves and removes the first element of this deque, or returns null if this deque is empty.
+E	pollLast()
+Retrieves and removes the last element of this deque, or returns null if this deque is empty.
+E	pop()
+Pops an element from the stack represented by this deque.
+void	push(E e)
+Pushes an element onto the stack represented by this deque (in other words, at the head of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+E	remove()
+Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque).
+boolean	remove(Object o)
+Removes the first occurrence of the specified element from this deque.
+E	removeFirst()
+Retrieves and removes the first element of this deque.
+boolean	removeFirstOccurrence(Object o)
+Removes the first occurrence of the specified element from this deque.
+E	removeLast()
+Retrieves and removes the last element of this deque.
+boolean	removeLastOccurrence(Object o)
+Removes the last occurrence of the specified element from this deque.
+int	size()
+Returns the number of elements in this deque.
+Methods inherited from interface java.util.Collection
+addAll, clear, containsAll, equals, hashCode, isEmpty, removeAll, retainAll, toArray, toArray
+Method Detail
+addFirst
+void addFirst(E e)
+Inserts the specified element at the front of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerFirst(E).
+Parameters:
+e - the element to add
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+addLast
+void addLast(E e)
+Inserts the specified element at the end of this deque if it is possible to do so immediately without violating capacity restrictions. When using a capacity-restricted deque, it is generally preferable to use method offerLast(E).
+This method is equivalent to add(E).
+
+Parameters:
+e - the element to add
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+offerFirst
+boolean offerFirst(E e)
+Inserts the specified element at the front of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addFirst(E) method, which can fail to insert an element only by throwing an exception.
+Parameters:
+e - the element to add
+Returns:
+true if the element was added to this deque, else false
+Throws:
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+offerLast
+boolean offerLast(E e)
+Inserts the specified element at the end of this deque unless it would violate capacity restrictions. When using a capacity-restricted deque, this method is generally preferable to the addLast(E) method, which can fail to insert an element only by throwing an exception.
+Parameters:
+e - the element to add
+Returns:
+true if the element was added to this deque, else false
+Throws:
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+removeFirst
+E removeFirst()
+Retrieves and removes the first element of this deque. This method differs from pollFirst only in that it throws an exception if this deque is empty.
+Returns:
+the head of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+removeLast
+E removeLast()
+Retrieves and removes the last element of this deque. This method differs from pollLast only in that it throws an exception if this deque is empty.
+Returns:
+the tail of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+pollFirst
+E pollFirst()
+Retrieves and removes the first element of this deque, or returns null if this deque is empty.
+Returns:
+the head of this deque, or null if this deque is empty
+pollLast
+E pollLast()
+Retrieves and removes the last element of this deque, or returns null if this deque is empty.
+Returns:
+the tail of this deque, or null if this deque is empty
+getFirst
+E getFirst()
+Retrieves, but does not remove, the first element of this deque. This method differs from peekFirst only in that it throws an exception if this deque is empty.
+Returns:
+the head of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+getLast
+E getLast()
+Retrieves, but does not remove, the last element of this deque. This method differs from peekLast only in that it throws an exception if this deque is empty.
+Returns:
+the tail of this deque
+Throws:
+NoSuchElementException - if this deque is empty
+peekFirst
+E peekFirst()
+Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty.
+Returns:
+the head of this deque, or null if this deque is empty
+peekLast
+E peekLast()
+Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty.
+Returns:
+the tail of this deque, or null if this deque is empty
+removeFirstOccurrence
+boolean removeFirstOccurrence(Object o)
+Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+Parameters:
+o - element to be removed from this deque, if present
+Returns:
+true if an element was removed as a result of this call
+Throws:
+ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+removeLastOccurrence
+boolean removeLastOccurrence(Object o)
+Removes the last occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the last element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+Parameters:
+o - element to be removed from this deque, if present
+Returns:
+true if an element was removed as a result of this call
+Throws:
+ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+add
+boolean add(E e)
+Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available. When using a capacity-restricted deque, it is generally preferable to use offer.
+This method is equivalent to addLast(E).
+
+Specified by:
+add in interface Collection<E>
+Specified by:
+add in interface Queue<E>
+Parameters:
+e - the element to add
+Returns:
+true (as specified by Collection.add(E))
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+offer
+boolean offer(E e)
+Inserts the specified element into the queue represented by this deque (in other words, at the tail of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and false if no space is currently available. When using a capacity-restricted deque, this method is generally preferable to the add(E) method, which can fail to insert an element only by throwing an exception.
+This method is equivalent to offerLast(E).
+
+Specified by:
+offer in interface Queue<E>
+Parameters:
+e - the element to add
+Returns:
+true if the element was added to this deque, else false
+Throws:
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+remove
+E remove()
+Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from poll only in that it throws an exception if this deque is empty.
+This method is equivalent to removeFirst().
+
+Specified by:
+remove in interface Queue<E>
+Returns:
+the head of the queue represented by this deque
+Throws:
+NoSuchElementException - if this deque is empty
+poll
+E poll()
+Retrieves and removes the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+This method is equivalent to pollFirst().
+
+Specified by:
+poll in interface Queue<E>
+Returns:
+the first element of this deque, or null if this deque is empty
+element
+E element()
+Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque). This method differs from peek only in that it throws an exception if this deque is empty.
+This method is equivalent to getFirst().
+
+Specified by:
+element in interface Queue<E>
+Returns:
+the head of the queue represented by this deque
+Throws:
+NoSuchElementException - if this deque is empty
+peek
+E peek()
+Retrieves, but does not remove, the head of the queue represented by this deque (in other words, the first element of this deque), or returns null if this deque is empty.
+This method is equivalent to peekFirst().
+
+Specified by:
+peek in interface Queue<E>
+Returns:
+the head of the queue represented by this deque, or null if this deque is empty
+push
+void push(E e)
+Pushes an element onto the stack represented by this deque (in other words, at the head of this deque) if it is possible to do so immediately without violating capacity restrictions, returning true upon success and throwing an IllegalStateException if no space is currently available.
+This method is equivalent to addFirst(E).
+
+Parameters:
+e - the element to push
+Throws:
+IllegalStateException - if the element cannot be added at this time due to capacity restrictions
+ClassCastException - if the class of the specified element prevents it from being added to this deque
+NullPointerException - if the specified element is null and this deque does not permit null elements
+IllegalArgumentException - if some property of the specified element prevents it from being added to this deque
+pop
+E pop()
+Pops an element from the stack represented by this deque. In other words, removes and returns the first element of this deque.
+This method is equivalent to removeFirst().
+
+Returns:
+the element at the front of this deque (which is the top of the stack represented by this deque)
+Throws:
+NoSuchElementException - if this deque is empty
+remove
+boolean remove(Object o)
+Removes the first occurrence of the specified element from this deque. If the deque does not contain the element, it is unchanged. More formally, removes the first element e such that (o==null ? e==null : o.equals(e)) (if such an element exists). Returns true if this deque contained the specified element (or equivalently, if this deque changed as a result of the call).
+This method is equivalent to removeFirstOccurrence(java.lang.Object).
+
+Specified by:
+remove in interface Collection<E>
+Parameters:
+o - element to be removed from this deque, if present
+Returns:
+true if an element was removed as a result of this call
+Throws:
+ClassCastException - if the class of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+contains
+boolean contains(Object o)
+Returns true if this deque contains the specified element. More formally, returns true if and only if this deque contains at least one element e such that (o==null ? e==null : o.equals(e)).
+Specified by:
+contains in interface Collection<E>
+Parameters:
+o - element whose presence in this deque is to be tested
+Returns:
+true if this deque contains the specified element
+Throws:
+ClassCastException - if the type of the specified element is incompatible with this deque (optional)
+NullPointerException - if the specified element is null and this deque does not permit null elements (optional)
+size
+int size()
+Returns the number of elements in this deque.
+Specified by:
+size in interface Collection<E>
+Returns:
+the number of elements in this deque
+iterator
+Iterator<E> iterator()
+Returns an iterator over the elements in this deque in proper sequence. The elements will be returned in order from first (head) to last (tail).
+Specified by:
+iterator in interface Collection<E>
+Specified by:
+iterator in interface Iterable<E>
+Returns:
+an iterator over the elements in this deque in proper sequence
+descendingIterator
+Iterator<E> descendingIterator()
+Returns an iterator over the elements in this deque in reverse sequential order. The elements will be returned in order from last (tail) to first (head).
+Returns:
+an iterator over the elements in this deque in reverse sequence
+OverviewPackageClassUseTreeDeprecatedIndexHelpJava™ Platform
+Standard Ed. 7Prev ClassNext ClassFramesNo FramesAll ClassesSummary: Nested | Field | Constr | MethodDetail: Field | Constr | Method
+Submit a bug or feature
+For further API reference and developer documentation, see Java SE Documentation. That documentation contains more detailed, developer-targeted descriptions, with conceptual overviews, definitions of terms, workarounds, and working code examples.
+Copyright © 1993, 2020, Oracle and/or its affiliates. All rights reserved. Use is subject to license terms. Also see the documentation redistribution policy. Modify Cookie Preferences. Modify Ad Choices.int temp = (int) deque.peekFirst();
+                import java.util.*;
+    import java.util.*;
+
+public class test {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Deque deque = new ArrayDeque<>();
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int []chk=new int[10000002];
+        int maxUnique = 0, cur = 0;
+
+        boolean flag = false;
+        for (int i = 0; i < n; i++) {
+            int num = in.nextInt();
+
+            if (deque.size() < m) {
+                if (chk[num]==0) {
+                    cur++;
+                }
+                chk[num]++;
+                deque.addLast(num);
+            } else {deque.removeFirst();
+                chk[temp]--;
+
+                if (chk[temp]==0) {
+                    cur--;
+                }
+                if (chk[num]==0) {
+                    cur++;
+                }
+                chk[num]++;
+                deque.addLast(num);
+                flag = true;
+            }
+           // System.out.println(i+" "+num+" "+cur);
+            if (flag) {
+                maxUnique = Math.max(maxUnique, cur);
+            }
+        }
+         maxUnique = Math.max(maxUnique, cur);
+        System.out.println(maxUnique);
+
+    }
+}
+
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashSet;
+import java.util.Scanner;
+
+public class test {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+
+		ArrayDeque<Integer> deque = new ArrayDeque<Integer>();
+		int N = sc.nextInt();
+		int M = sc.nextInt();
+		int maxUniqueNum = 0;
+		int uniqueNum = 0;
+		for (int i = 0; i < N; i++) {
+			int number = sc.nextInt();
+
+			if (deque.size() == M - 1) {
+				uniqueNum = computeUniqueNum(deque);
+			}
+			if (deque.size() >= M - 1) {
+				if (!deque.contains(number)) {
+					uniqueNum++;
+				}
+			}
+			deque.offerLast(number);
+
+			if (deque.size() > M) {
+				int polled = deque.pollFirst();
+				if (!deque.contains(polled)) {
+					uniqueNum--;
+				}
+			}
+
+			maxUniqueNum = Math.max(maxUniqueNum, uniqueNum);
+		}
+		System.out.println(maxUniqueNum);
+
+		sc.close();
+	}
+
+	static int computeUniqueNum(Deque<Integer> deque) {
+		return new HashSet<Integer>(deque).size();
+	}
+}
+
+
+
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Solution {
+	public static class IncMap extends HashMap<Integer, Integer> {
+		
+		public void inc(int key) {
+			this.compute(key, (k,  v) -> (v == null) ? 1 : v+1 );
+		}
+		
+		public void dec(int key) {
+			this.computeIfPresent(key, (k, v) -> { if (v == 1) this.remove(k); return v-1; } );
+		}
+	}
+
+	public static void main(String[] args) {
+		Scanner in = new Scanner(System.in);
+		int n = in.nextInt();
+		int m = in.nextInt();
+		Deque<Integer> deque = new LinkedList<Integer>();
+		Deque<Integer> slice = new LinkedList<Integer>();
+
+		IncMap active = new IncMap();
+
+		for (int i = 0; i < n; i++) {
+			int num = in.nextInt();
+			if (i < m) {
+				slice.add(num);
+				active.inc(num);
+			}
+			else {
+				deque.add(num);
+			}
+		}
+		
+		in.close();
+		
+		
+		int max = active.size();
+		
+		while (!deque.isEmpty()) {
+			int oldVal = slice.poll();
+			active.dec(oldVal);
+			int newVal = deque.poll();
+			slice.add(newVal);
+			active.inc(newVal);
+			max = Math.max(active.size(), max);
+		}
+		
+		System.out.println(max);
+	}
+}
+
+import java.util.*;
+
+public class test {
+    
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Deque<Integer> deque = new ArrayDeque<>();
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int maxUnique = 0;
+        int currentUnique = 0;
+
+        for (int i = 0; i < n; i++) {
+            int num = in.nextInt();
+            if (!deque.contains(num)) {
+                currentUnique++;
+            }
+            deque.addLast(num);
+            if (deque.size() > m) {
+                if (!deque.contains(deque.removeFirst())) {
+                    currentUnique--;
+                }
+            }
+            if (currentUnique > maxUnique) {
+                maxUnique = currentUnique;
+            }
+        }
+        System.out.println(maxUnique);
+    }
+}
+
+    import java.util.*;
+    public class test {
+        public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+            Deque<Integer> deque = new ArrayDeque<>();
+            int n = in.nextInt();
+            int m = in.nextInt();
+            List<Integer> input = new ArrayList<>();
+            Map<Integer,Integer> map = new HashMap<>();
+            for (int i = 0; i < n; i++) {
+                Integer num = in.nextInt();
+                input.add(num);
+                if (i<m) {
+                    deque.addLast(num);
+                    if (map.containsKey(num)) {
+                    	map.put(num, map.get(num) + 1);
+                    } else {
+                    	map.put(num, Integer.valueOf(1));
+                    }
+                }
+            }
+            int k=m;
+            int result = 0;
+            while(k<=n){
+                if(map.keySet().size() > result) {
+                    result = map.keySet().size();
+                }
+                Integer x = deque.removeFirst();
+                if (map.get(x) > 1) {
+                	map.put(x, map.get(x) - 1);
+                } else {
+                	map.remove(x);
+                }
+                k = k+1;
+                if (k < input.size()) {
+	                Integer p = input.get(k);
+	                deque.addLast(p);
+	                if (map.containsKey(p)) {
+	                	map.put(p, map.get(p) + 1);
+	                } else {
+	                	map.put(p, Integer.valueOf(1));
+	                }
+                }
+            }
+            System.out.println(result);
+        }
+	}
+
+import java.util.*;
+
+
+public class test {
+        
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+
+        Deque<Integer> deque = new ArrayDeque<>(m);
+
+        int maxUnique = 0;
+        int numUnique = 0;
+        int prevUnique = 0;
+
+        for (int i = 0; i < m; i++) {
+            int num = scanner.nextInt();
+            if (!deque.contains(num)) numUnique++;
+            deque.addLast(num);
+        }
+
+        maxUnique = numUnique;
+        prevUnique = numUnique;
+
+        for (int i = m; i < n; i++) {
+            int lastNum = deque.pollFirst();
+            prevUnique = deque.contains(lastNum) ? prevUnique : prevUnique-1;
+            int num = scanner.nextInt();
+            numUnique = deque.contains(num) ? prevUnique : prevUnique+1;
+            maxUnique = Math.max(maxUnique, numUnique);
+            deque.addLast(num);
+        }
+
+        System.out.println(maxUnique);
+
+        scanner.close();
+    }
+      
+}
+
+import java.util.*;
+    public class test {
+        public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+            Deque<Integer> deque = new ArrayDeque<>();
+            Map<Integer, Integer> map = new HashMap<>();
+            int n = in.nextInt();
+            int m = in.nextInt();
+            int max = 0;
+            for (int i = 0; i < n; i++) {
+                int num = in.nextInt();
+                if (deque.size() == m) {
+                    int f = deque.removeFirst();
+                    map.replace(f, map.get(f) - 1);
+                    map.remove(f, 0);
+                }
+                deque.add(num);
+                if (map.containsKey(num)) {
+                    map.put(num, map.get(num) + 1);
+                } else {
+                    map.put(num, 1);
+                }
+                if (map.size() > max) {
+                    max = map.size();
+                }
+            }
+            System.out.println(max);
+            in.close();
+        }
+    }
+
+public class JavaDequeue {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Deque<Integer> dq = new ArrayDeque<Integer>();
+		HashSet<Integer> s = new HashSet<Integer>();
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		int max = 0;
+		for (int i = 0; i < n; i++) {
+			int tmp = sc.nextInt();
+			dq.add(tmp);
+			s.add(tmp);
+			if (dq.size() == m) {
+				max = Math.max(s.size(), max);
+				int item = dq.remove();
+				if (!dq.contains(item)) {
+					s.remove(item);
+				}
+			}
+		}
+		System.out.println(max);
+		sc.close();
+	}
+}
+
+ import java.util.*;
+
+public class test {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Deque<Integer> deque = new ArrayDeque<>();
+        HashSet<Integer> set = new HashSet<>();
+
+        int n = in.nextInt();
+        int m = in.nextInt();
+        int max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < n; i++) {
+            int input = in.nextInt();
+
+            deque.add(input);
+            set.add(input);
+
+            if (deque.size() == m) {
+                if (set.size() > max) max = set.size();
+                int first = deque.remove();
+                if (!deque.contains(first)) set.remove(first);
+            }
+        }
+
+        System.out.println(max);
+    }
+}
+In computer science, a double-ended queue (dequeue, often abbreviated to deque, pronounced deck) is an abstract data type that generalizes a queue, for which elements can be added to or removed from either the front (head) or back (tail).
+
+Deque interfaces can be implemented using various types of collections such as LinkedList or ArrayDeque classes. For example, deque can be declared as:
+
+Deque deque = new LinkedList<>();
+or
+Deque deque = new ArrayDeque<>();
+You can find more details about Deque here.
+
+In this problem, you are given  integers. You need to find the maximum number of unique integers among all the possible contiguous subarrays of size .
+
+Note: Time limit is  second for this problem.
+
+Input Format
+
+The first line of input contains two integers  and : representing the total number of integers and the size of the subarray, respectively. The next line contains  space separated integers.
+
+Constraints
+
+1<=N<=100000
+1<=M<=100000
+N<=M
+
+
+
+
+The numbers in the array will range between .[0,100000000]
+
+Output Format
+
+Print the maximum number of unique integers among all possible contiguous subarrays of size .
+
+Sample Input
+
+6 3
+5 3 5 2 3 2
+Sample Output
+
+3
+Explanation
+
+In the sample testcase, there are 4 subarrays of contiguous numbers.
+
+ s1 = <5,3,5>- Has 2 unique numbers.
+
+s2 <3,5,2> - Has 3 unique numbers.
+
+ - Has  unique numbers.
+
+ - Has  unique numbers.
+
+In these subarrays, there are 2,3 unique numbers, respectively. The maximum amount of unique numbers among all possible contiguous subarrays is 3.
+
+Language
+Java 8
+
+More
+4567891011121314151617181920212223242526272829
+                int first = deque.remove();
+                if (!deque.contains(first)) set.remove(first);
+            }
+        }
+
+        System.out.println(max);
+    }
+}
+
+Line: 29 Col: 1
+
+Submit Code
+
+Run Code
+
+Upload Code as File
+
+Test against custom input
+Contest CalendarBlog
+

@@ -1,0 +1,23 @@
+package com.Collections;
+
+import java.util.LinkedHashMap;
+
+public class LinkedHashMap_1 {
+	
+	public static void main(String[] args) {
+		
+		LinkedHashMap lhm = new LinkedHashMap();
+		
+		lhm.put(25 , "A");
+		lhm.put(88 , "A");
+		lhm.put(null , "hi");
+		lhm.put(null, 83);
+		lhm.put(25, "B");
+		lhm.put(A,"Apu");
+		lhm.put(B, "Apu");
+		
+		System.out.println(lhm);
+		
+	}
+
+}

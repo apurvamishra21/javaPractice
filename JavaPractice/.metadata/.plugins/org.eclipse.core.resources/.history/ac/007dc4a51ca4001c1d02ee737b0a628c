@@ -1,0 +1,78 @@
+package com.Collections;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Set;
+
+public class HashMap_2 {
+
+	public static void main(String[] args) {
+
+		HashMap hm = new HashMap();
+		
+		
+		hm.put(25, "A");
+		hm.put(88, "v");
+		hm.put(86, "n");
+		hm.put(83, "i");
+		
+		System.out.println(hm);
+		
+		System.out.println(hm.containsKey(10));
+		System.out.println(hm.containsKey(30));
+		System.out.println(hm.containsValue("X"));
+		System.out.println(hm.get(63));
+		System.out.println(hm.containsKey(88));
+		System.out.println(hm.containsKey("i"));
+		
+		
+		hm.remove(10);
+		
+		System.out.println(hm);
+		
+		System.out.println("All Keys: -");
+		
+		Set allKeys = hm.keySet();
+		
+		for(Object obj : allKeys) {
+			
+			System.out.println(obj);
+		}
+		
+		System.out.println("All Values : - ");
+		
+		Collection allValue = hm.values();
+		
+		for(Object obj : allValue) {
+			
+			System.out.println(obj);
+		}
+		
+		
+		
+		
+		
+
+	}
+
+}
+
+
+/*83=i, 86=n, 88=v, 25=A}
+false
+false
+false
+null
+{83=i, 86=n, 88=v, 25=A}
+All Keys: -
+83
+86
+88
+25
+All Values : - 
+i
+n
+v
+A
+*/
+//{83=i, 86=n, 88=v, 25=A}

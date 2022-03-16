@@ -1,0 +1,44 @@
+package com.Collections;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+public class HashMap_3 {
+	
+	public static void main(String[] args) {
+		
+		HashMap hm = new HashMap();
+		
+		
+		hm.put(125, hm);
+		hm.put(100, hm);
+		hm.put(99, hm);
+		hm.put(96, hm);
+		hm.put(50, hm);
+		hm.put(57, hm);
+		
+		System.out.println(hm);
+		
+		Set entries = hm.entrySet();
+		
+		Iterator itr = entries.iterator();
+		while(itr.hasNext()) {
+			
+			Object obj = itr.next();
+			
+			Map.Entry e = (Map.Entry)obj;
+			
+			System.out.println("Key :" + e.getKey());
+			System.out.println("Value :" + e.getValue());
+			
+			if(e.getValue().toString().equals("Apurva")) {
+				e.setValue("I.A.S Apurva");
+			}
+		}
+		
+		System.out.println(hm);
+	}
+
+}

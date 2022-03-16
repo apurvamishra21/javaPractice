@@ -1,0 +1,32 @@
+package com.Collections;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+public class Deque {
+	
+	public static void main(String[] args) {
+		
+	approach1();
+	approach2();
+		
+	}
+	
+	public static void approach1() {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter total size :");
+		
+		int sizeNum = sc.nextInt();
+		
+		System.out.println("Enter total group size :");
+		
+		int groupNum = sc.nextInt(); 
+		
+		LinkedList<Integer> ll = new LinkedList<Integer>();
+		
+		System.out.println("Enter number : -");
+	}
+
+}

@@ -1,0 +1,39 @@
+package com.Collections;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+public class Utility_Synchronized {
+	
+public static void main(String[] args) {
+		
+		ArrayList al = new ArrayList();
+		
+		al.add(15);
+		
+		List l1 = Collections.synchronizedList(al);
+		
+		HashSet hs = new HashSet();
+		
+		hs.add("H");
+		
+		Set s = Collections.synchronizedSet(hs);
+		
+		HashMap hm = new HashMap();
+		hm.put(19 , "Hi");
+		
+		Map m = Collections.synchronizedMap(hm);
+		
+	
+		
+		
+	}
+
+}
+
+

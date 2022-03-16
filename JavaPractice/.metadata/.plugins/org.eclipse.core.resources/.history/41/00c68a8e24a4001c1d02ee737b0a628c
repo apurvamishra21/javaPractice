@@ -1,0 +1,23 @@
+package com.Collections;
+
+import java.util.TreeMap;
+
+public class TreeMap_1 {
+	
+	public static void main(String[] args) {
+		
+	
+	
+	TreeMap tm = new TreeMap();
+	
+	tm.put(A , "Bye");
+	tm.put(22 , "hi");
+	tm.put(24 , "bye");
+	tm.put(16 , null);
+	tm.put(19 , 8.66);
+	
+	System.out.println(tm);
+	
+
+}
+}

@@ -1,0 +1,26 @@
+package com.Collections;
+
+import java.util.HashMap;
+
+public class HashMap_2 {
+
+	public static void main(String[] args) {
+
+		HashMap hm = new HashMap();
+		
+		
+		hm.put(25, "A");
+		hm.put(88, "v");
+		hm.put(86, "n");
+		hm.put(83, "i");
+		
+		System.out.println(hm);
+		
+		
+		
+		
+
+	}
+
+}
+//{83=i, 86=n, 88=v, 25=A}

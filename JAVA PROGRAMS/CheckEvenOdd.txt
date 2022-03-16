@@ -1,0 +1,10 @@
+class CheckEvenOdd
+{
+	public static void main(String[] args)
+	{
+		System.out.println("main method starts");
+		int num = 5;
+		String output = num%2 == 0 ? "number is even" : "number is odd" ;
+		System.out.println(num + "is" + output);
+	}
+}
